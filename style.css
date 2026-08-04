@@ -1,0 +1,356 @@
+:root {
+  --primary: #d90429;
+  --secondary: #ef233c;
+  --bg-color: #fff0f3;
+  --text-main: #2b2d42;
+  --nav-bg: rgba(255, 255, 255, 0.95);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Intro Screen */
+#intro-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #ffb3c6, #ff8fa3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  transition:
+    opacity 1s ease-in-out,
+    visibility 1s;
+}
+
+#intro-screen h1 {
+  font-family: "Dancing Script", cursive;
+  font-size: 3.5rem;
+  color: white;
+  margin-bottom: 30px;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  padding: 0 20px;
+}
+
+.btn {
+  background-color: white;
+  color: var(--primary);
+  border: none;
+  padding: 15px 40px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(217, 4, 41, 0.3);
+  transition: all 0.3s ease;
+}
+.btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 20px rgba(217, 4, 41, 0.5);
+}
+
+/* Navigation */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: var(--nav-bg);
+  backdrop-filter: blur(10px);
+  padding: 15px 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  z-index: 50;
+  display: none;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+nav a {
+  text-decoration: none;
+  color: var(--text-main);
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: color 0.3s;
+  padding: 5px 10px;
+}
+nav a:hover,
+nav a.active {
+  color: var(--primary);
+}
+
+/* =========================================
+   Interactive 5-Image Collage Styles
+   ========================================= */
+.collage {
+  display: grid;
+  /* 3 equal columns */
+  grid-template-columns: repeat(3, 1fr);
+  /* 2 rows, 160px tall each */
+  grid-template-rows: 160px 160px;
+  gap: 15px;
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.collage-item {
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  position: relative;
+  cursor: pointer;
+  transition:
+    box-shadow 0.4s ease,
+    transform 0.4s ease;
+
+  /* Setup for the pop-in animation */
+  opacity: 0;
+  animation: popIn 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Staggered load times so they pop in one after another */
+.collage-item:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.collage-item:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.collage-item:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.collage-item:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.collage-item:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Makes the first image span across the left side */
+.item-tall {
+  grid-row: span 2;
+}
+
+.collage-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition:
+    transform 0.5s ease,
+    filter 0.5s ease;
+}
+
+/* --- INTERACTIVE HOVER EFFECTS --- */
+.collage-item:hover {
+  /* Adds a romantic red glow behind the image */
+  box-shadow: 0 15px 35px rgba(217, 4, 41, 0.4);
+  z-index: 10;
+}
+
+.collage-item:hover img {
+  /* Zooms in, tilts slightly, and brightens up */
+  transform: scale(1.15) rotate(2deg);
+  filter: brightness(1.05);
+}
+
+/* --- MOBILE ADJUSTMENTS --- */
+@media (max-width: 600px) {
+  .collage {
+    /* Drops to 2 columns on phones */
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 140px 140px 140px;
+  }
+  .item-tall {
+    grid-row: span 2;
+    grid-column: span 1;
+  }
+  /* Makes the last image stretch across the bottom so there's no empty space */
+  .collage-item:nth-child(5) {
+    grid-column: span 2;
+  }
+}
+.page {
+  display: none;
+  padding: 120px 20px 40px;
+  min-height: 100vh;
+  max-width: 1000px;
+  margin: 0 auto;
+  animation: fadeIn 0.8s ease-in-out;
+  text-align: center;
+}
+.page.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h1.title {
+  font-family: "Dancing Script", cursive;
+  font-size: 4rem;
+  color: var(--primary);
+  margin-bottom: 15px;
+}
+p.subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  color: #555;
+}
+
+/* Cards */
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+.flip-card {
+  background-color: transparent;
+  width: 280px;
+  height: 350px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transform-style: preserve-3d;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+}
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.flip-card-front {
+  background-color: white;
+  border: 2px solid #ffb3c6;
+}
+.flip-card-front img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+.flip-card-front h2 {
+  font-family: "Dancing Script", cursive;
+  font-size: 2.2rem;
+  color: var(--primary);
+}
+.flip-card-back {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  transform: rotateY(180deg);
+}
+.music-indicator {
+  margin-top: 15px;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  font-style: italic;
+}
+
+/* Letters & Sections */
+.letter-paper {
+  background: white;
+  padding: 50px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: left;
+  line-height: 1.8;
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 31px,
+    #e0e0e0 31px,
+    #e0e0e0 32px
+  );
+  background-position: 0 10px;
+}
+.letter-paper p {
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+}
+.letter-paper .signature {
+  font-family: "Dancing Script", cursive;
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-top: 30px;
+  text-align: right;
+}
+
+#apology .letter-paper {
+  border-left: 5px solid #2b2d42;
+}
+
+/* Hearts Animation */
+.heart {
+  position: fixed;
+  top: 100vh;
+  font-size: 1.5rem;
+  animation: floatUp linear forwards;
+  z-index: 1;
+  opacity: 0.6;
+  pointer-events: none;
+}
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120vh) scale(1.5) rotate(360deg);
+    opacity: 0;
+  }
+}

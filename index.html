@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>For You ❤️</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Links to your separate CSS file -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Intro Screen -->
+    <div id="intro-screen">
+      <h1>For My Favorite Person... ❤️</h1>
+      <button class="btn" onclick="revealSurprise()">Click to Open</button>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav id="navbar">
+      <a onclick="showPage('home')" class="active" id="nav-home">Home</a>
+      <a onclick="showPage('memories')" id="nav-memories">Memories & Music</a>
+      <a onclick="showPage('apology')" id="nav-apology">I'm Sorry</a>
+      <a onclick="showPage('letter')" id="nav-letter">A Letter</a>
+    </nav>
+
+    <!-- Page 1: Home -->
+    <div id="home" class="page active">
+      <h1 class="title">Happy Girlfriend's Day!</h1>
+      <p class="subtitle">A little digital space dedicated just to you.</p>
+
+      <div class="collage">
+        <!-- Image 1: Left Tall -->
+        <div class="collage-item item-tall">
+          <img src="./1.jpg" alt="Us 1" />
+        </div>
+        <!-- Image 2: Top Middle -->
+        <div class="collage-item">
+          <img src="./2.jpg" alt="Us 2" />
+        </div>
+        <!-- Image 3: Top Right -->
+        <div class="collage-item">
+          <img src="./3.jpg" alt="Us 3" />
+        </div>
+        <!-- Image 4: Bottom Middle -->
+        <div class="collage-item">
+          <img src="./4.jpg" alt="Us 4" />
+        </div>
+        <!-- Image 5: Bottom Right -->
+        <div class="collage-item">
+          <img src="./5.jpg" alt="Us 5" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Page 2: Memories & Music (Clickable Cards) -->
+    <div id="memories" class="page">
+      <h1 class="title">Our Memories</h1>
+      <p class="subtitle">
+        Click a card to read it and play a song that reminds me of us. 🎵
+      </p>
+
+      <div class="cards-container">
+        <!-- Card 1 -->
+        <div class="flip-card" onclick="toggleCard(this, 'song1')">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img
+                src="https://images.unsplash.com/photo-1474552226712-ac0f0961a954?w=500&auto=format&fit=crop&q=60"
+                alt="Travel"
+              />
+              <h2>Adventures</h2>
+              <p style="font-size: 0.9rem; color: #666; margin-top: 5px">
+                (Click to flip & play)
+              </p>
+            </div>
+            <div class="flip-card-back">
+              <p>
+                Every trip with you is my favorite adventure. I love exploring
+                the world with my best friend.
+              </p>
+              <p class="music-indicator">🎵 Playing our travel song...</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="flip-card" onclick="toggleCard(this, 'song2')">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img
+                src="https://images.unsplash.com/photo-1505909182942-e2f09aee3e89?w=500&auto=format&fit=crop&q=60"
+                alt="Us"
+              />
+              <h2>Quiet Nights</h2>
+              <p style="font-size: 0.9rem; color: #666; margin-top: 5px">
+                (Click to flip & play)
+              </p>
+            </div>
+            <div class="flip-card-back">
+              <p>
+                My favorite moments are the quiet ones. Just sitting with you,
+                doing absolutely nothing, is everything to me.
+              </p>
+              <p class="music-indicator">🎵 Playing your favorite song...</p>
+            </div>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="flip-card" onclick="toggleCard(this, 'song3')">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img
+                src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=500&auto=format&fit=crop&q=60"
+                alt="Food Dates"
+              />
+              <h2>Sweet Moments</h2>
+              <p style="font-size: 0.9rem; color: #666; margin-top: 5px">
+                (Click to flip & play)
+              </p>
+            </div>
+            <div class="flip-card-back">
+              <p>
+                From splitting our favorite pizzas to those random Momos and
+                Amenia Chicken Tikka roll cravings, sharing anything with you
+                makes it a million times better.
+              </p>
+              <p class="music-indicator">🎵 Playing our upbeat song...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page 3: I'm Sorry Section -->
+    <div id="apology" class="page">
+      <h1 class="title" style="color: #2b2d42">I'm Sorry</h1>
+      <p class="subtitle">For the times I've fallen short.</p>
+
+      <div class="letter-paper">
+        <p>Hey Kuchupuchu,</p>
+        <p>
+          I wanted to take a moment in here to sincerely apologize. I know I’m
+          not perfect, and I know there have been times I’ve been difficult,
+          stubborn, or just plain stupid (I am just dumb bro).
+        </p>
+        <p>
+          I am so sorry for the times I've let you down, raised my voice, or
+          made you feel like you weren't my number one priority. You deserve the
+          absolute best, and I promise I am always trying to be better for you.
+          Altough you are angry over me right now but I'll try me best to help
+          out this situation. (Kuchupuchu tum kahan ho...Mujhe accha nhi lag rha
+          hai tumhare bina)
+        </p>
+        <p>
+          Thank you for your patience, your forgiveness, and for loving me even
+          on my bad days. I never want to take your grace for granted....I am
+          sincerely sorry once again... Ho sake to ekbar maaf kar dena.
+        </p>
+        <div class="signature" style="color: #2b2d42">
+          I love you,<br />Ishan
+        </div>
+      </div>
+    </div>
+
+    <!-- Page 4: A Letter -->
+    <div id="letter" class="page">
+      <h1 class="title">A Letter to You</h1>
+
+      <div class="letter-paper">
+        <p>My Dearest Snehajita,</p>
+        <p>
+          I wanted to make something a little different for you this year. I was
+          thinking about all the time we've spent together, and I just realized
+          how incredibly lucky I am.
+        </p>
+        <p>
+          You make the tough days easier and the good days unforgettable. Thank
+          you for supporting my crazy ideas and for just being you.
+        </p>
+        <p>I can't wait to make a million more memories with you.</p>
+        <p>
+          Happy Girlfriend's Day.(Gifting this on girlfriends day was my
+          original plan but i came to know about it just 3 days before
+          girlfriends day...and this takes some time to make..sorry)
+        </p>
+        <p>
+          If this doesn't lift up your mood, then
+          <a
+            href="https://open.spotify.com/track/1sxh0eqIb8ulYypPuq6ZRu?autoplay_ok=1"
+            target="_blank"
+            style="
+              color: var(--primary);
+              font-weight: 600;
+              text-decoration: underline;
+              transition: color 0.3s;
+            "
+            >click on this link</a
+          >.(My reaction after this)🎵
+        </p>
+        <div class="signature">Forever Yours,<br />Your kuchupuchu</div>
+      </div>
+    </div>
+
+    <!-- AUDIO PLAYERS (Hidden) -->
+    <!-- data-volume="0.3" means it will play at 30% volume -->
+    <audio
+      id="song1"
+      src="YOUR_FIRST_SONG_FILE.mp3"
+      data-start="75"
+      data-volume="0.45"
+      loop
+    ></audio>
+    <audio
+      id="song2"
+      src="YOUR_SECOND_SONG_FILE.mp3"
+      data-start="30"
+      data-volume="0.45"
+      loop
+    ></audio>
+    <audio
+      id="song3"
+      src="YOUR_THIRD_SONG_FILE.mp3"
+      data-start="0"
+      data-volume="0.45"
+      loop
+    ></audio>
+    <script src="script.js"></script>
+  </body>
+</html>
