@@ -43,19 +43,24 @@ function toggleCard(cardElement, songId) {
     if (!isFlipped) {
         cardElement.classList.add('flipped');
         const audio = document.getElementById(songId);
-        
         if(audio) {
-            // Get the custom start time, or default to 0
+            // Get the custom start time, or default to 0 if none is set
             const startTime = audio.getAttribute('data-start') || 0;
             audio.currentTime = startTime; 
-            
-            // Get the custom volume (0.0 to 1.0), or default to 1.0 (100%)
-            const customVolume = audio.getAttribute('data-volume') || 1.0;
-            audio.volume = parseFloat(customVolume);
             
             audio.play().catch(e => console.log("Add your MP3 file for this to play!"));
         }
     }
+}
+
+// Stop all audio players
+function stopAllAudio() {
+    document.querySelectorAll('audio').forEach(audio => {
+        audio.pause();
+        // Reset the audio back to our custom start time instead of 0
+        const startTime = audio.getAttribute('data-start') || 0;
+        audio.currentTime = startTime;
+    });
 }
 
 // Stop all audio players
